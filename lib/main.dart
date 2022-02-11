@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/screens/new_task_screen.dart';
 import 'screens/routing.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() {
+  //await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

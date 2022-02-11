@@ -119,9 +119,31 @@ class RepeatingTask {
 }
 
 class TaskList {
-  int taskListID;
-  String taskListName;
-  List<Task> nonRepeatingTasks;
+  int listID;
+  String listName;
+  bool isActive;
+  TaskList({
+    required this.listID,
+    required this.listName,
+    required this.isActive,
+  });
+
+  static TaskList fromMap(Map<String, dynamic> taskListAsMap) {
+    return TaskList(
+      listID: taskListAsMap["listID"],
+      listName: taskListAsMap["listName"],
+      isActive: taskListAsMap["isActive"] == 1 ? true : false,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "listID": listID,
+      "listName": listName,
+      "isActive": isActive == true ? 1 : 0,
+    };
+  }
+/*List<Task> nonRepeatingTasks;
   List<RepeatingTask> repeatingTasks;
   List<Task> activeRepeatingTaskInstances;
   TaskList({
@@ -130,8 +152,8 @@ class TaskList {
     required this.activeRepeatingTaskInstances,
     required this.taskListID,
     required this.taskListName,
-  });
-  /*List<Task> getActiveTasks() {
+  });*/
+/*List<Task> getActiveTasks() {
     //TODO::Select repeating Task Instances as well
     List<Task> activeNonRepeatingTasks = [];
     {
@@ -144,17 +166,16 @@ class TaskList {
     }
   }*/
 
-  /*List<Task> getFinishedTasks() {
+/*List<Task> getFinishedTasks() {
     //repeating Instances as well as non-repeating Instances
     return ([]);
   }
-
   void FinishTask(Task task) {}*/
 
-  /*void addTask({
+/*void addTask({
     required String taskName,
     DateTime? deadlineDate,
-    DateTime? deadlineTime,
+    TimeOfDay? deadlineTime,
     int? parentTaskID,
   }) {
     //
@@ -166,11 +187,10 @@ class TaskList {
       deadlineTime: deadlineTime,
       parentTaskID: parentTaskID,
     );
-
     if (parentTaskID != null) {
       //
     }
   }*/
 
-  /*void finishTask(Task task) {}*/
+/*void finishTask(Task task) {}*/
 }
